@@ -5,7 +5,8 @@ type messageType = {
 };
 
 const MessagePage = () => {
-  const [content, setContent] = useState(<mess>);
+  const [content, setContent] = useState<messageType>({ content: "" });
+
   return;
 };
 
