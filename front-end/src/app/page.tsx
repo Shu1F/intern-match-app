@@ -4,8 +4,16 @@ import React from "react";
 export default function Home() {
   return (
     <>
-      <Link href="/signup">Sign Up</Link>
-      <Link href="/signin">Sign In</Link>
+      <div>
+        企業の方はこちら
+        <Link href="/signup/company">Sign Up</Link>
+        <Link href="/signin/company">Sign In</Link>
+      </div>
+      <div>
+        学生の方はこちら
+        <Link href="/signup/studeny">Sign Up</Link>
+        <Link href="/signin/student">Sign In</Link>
+      </div>
     </>
   );
 }

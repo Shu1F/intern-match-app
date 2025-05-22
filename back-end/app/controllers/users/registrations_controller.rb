@@ -14,6 +14,10 @@ class Users::RegistrationsController < ApplicationController
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role, intern_profile_attributes: [ :name, :university ])
+    params.require(:user).permit(
+      :email, :password, :password_confirmation, :role,
+      intern_profile_attributes: [ :name, :university ],
+      company_profile_attributes: [ :name, :company ]
+    )
   end
 end

@@ -20,12 +20,9 @@ const SignInPage = () => {
           },
         }),
       });
-      const raw = res.headers.get("Authorization");
-      console.log("RAW HEADER", raw);
       const jwt = res.headers.get("Authorization")?.replace("Bearer ", "");
-      console.log("PARSED JWT", jwt);
       if (jwt) localStorage.setItem("token", jwt);
-      //   router.push("/dashboard");
+      router.push("/profiles");
     } catch (err) {
       alert("ログインに失敗しました。");
     }

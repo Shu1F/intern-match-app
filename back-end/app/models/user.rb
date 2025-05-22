@@ -5,8 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
+
   has_one :intern_profile, dependent: :destroy
   accepts_nested_attributes_for :intern_profile
+
+  has_one :company_profile, dependent: :destroy
+  accepts_nested_attributes_for :company_profile
 
   has_many :sent_messages,
             class_name: "Message",

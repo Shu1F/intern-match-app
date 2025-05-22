@@ -1,13 +1,13 @@
 class Api::V1::InternProfilesController < ApplicationController
-  before_action :set_Intern_Profile, only: [:show, :update]
-  before_action :ensure_company!, only: [:index]
-  before_action :ensure_student!, only: [:update, :create]
+  before_action :set_Intern_Profile, only: [ :show, :update ]
+  before_action :ensure_company!, only: [ :index ]
+  before_action :ensure_student!, only: [ :update, :create ]
 
   def index
     @profiles = InternProfile.all
     render json: @profiles, status: :ok
-  end  
-  
+  end
+
   def show
     render json: @profile, status: :ok
   end
@@ -17,7 +17,7 @@ class Api::V1::InternProfilesController < ApplicationController
 
     if @profile.save
       render json: @profile, status: :ok
-    else 
+    else
       render json: @profile.errors, status: :unprocessable_entity
     end
   end
@@ -38,13 +38,13 @@ class Api::V1::InternProfilesController < ApplicationController
 
   def ensure_company!
     unless current_user.company?
-      render json: {error: 'Permission denied.'}, status: :forbidden
+      render json: { error: "Permission denied." }, status: :forbidden
     end
   end
 
   def ensure_student!
     unless current_user.student?
-      render json: {error: 'Permission denied.'}, status: :forbidden
+      render json: { error: "Permission denied." }, status: :forbidden
     end
   end
 
