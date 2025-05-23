@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { profileType } from "../types/profileType";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ProfileListPage = () => {
   const [profiles, setProfiles] = useState<profileType[]>([]);
@@ -50,6 +51,9 @@ const ProfileListPage = () => {
           <div key={profileContent.id}>
             <h2>{profileContent.name}</h2>
             <p>{profileContent.university}</p>
+            <Link href={`profiles/${profileContent.id}/messages`}>
+              メッセージを送信する
+            </Link>
           </div>
         ))
       )}

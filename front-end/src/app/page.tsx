@@ -11,7 +11,7 @@ export default function Home() {
       </div>
       <div>
         学生の方はこちら
-        <Link href="/signup/studeny">Sign Up</Link>
+        <Link href="/signup/student">Sign Up</Link>
         <Link href="/signin/student">Sign In</Link>
       </div>
     </>
