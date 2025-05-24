@@ -1,0 +1,17 @@
+services:
+
+  fe:
+    build:
+      context: .
+    ports:
+      - .:/app
+      - node_modules:/fe/node_modules
+    command: sh -c "npm run dev"
+    networks:
+      - default
+      - back-end
+volumes:
+  node_modules:
+networks:
+  back-end:
+    external: true
