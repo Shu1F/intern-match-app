@@ -1,26 +1,26 @@
-"use client";
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SignUpPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password_confirmation, setPassword_confirmation] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password_confirmation, setPassword_confirmation] = useState('');
   //   const [role, setRole] = useState("");
-  const [name, setName] = useState("");
-  const [company, setCompany] = useState("");
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (password !== password_confirmation) {
-      alert("パスワードが一致しません");
+      alert('パスワードが一致しません');
       return;
     }
     try {
       const res = await fetch(`http://localhost:3001/users`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           user: {
             email: email,
@@ -34,11 +34,15 @@ const SignUpPage = () => {
           },
         }),
       });
-      const jwt = res.headers.get("Authorization")?.replace("Bearer ", "");
-      if (jwt) localStorage.setItem("token", jwt);
-      router.push("/profiles");
+      const jwt = res.headers.get('Authorization')?.replace('Bearer ', '');
+      if (!res.ok || !jwt) {
+        alert('認証に失敗しました。');
+        return;
+      }
+      localStorage.setItem('token', jwt);
+      router.push('/profiles');
     } catch (err) {
-      alert("アカウントの作成に失敗しました。");
+      alert('アカウントの作成に失敗しました。');
     }
   };
 
@@ -48,40 +52,40 @@ const SignUpPage = () => {
       <form onSubmit={handleSubmit}>
         <label>メールアドレス</label>
         <input
-          type="email"
+          type='email'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
           }
         />
         <label>パスワード</label>
         <input
-          type="password"
+          type='password'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }
         />
         <label>パスワードの確認</label>
         <input
-          type="password"
+          type='password'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword_confirmation(e.target.value)
           }
         />
         <label>名前</label>
         <input
-          type="text"
+          type='text'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
           }
         />
         <label>会社名</label>
         <input
-          type="text"
+          type='text'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setCompany(e.target.value)
           }
         />
-        <button type="submit">登録する</button>
+        <button type='submit'>登録する</button>
       </form>
     </div>
   );
