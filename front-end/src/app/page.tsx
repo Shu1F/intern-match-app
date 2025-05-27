@@ -1,19 +1,26 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
+import styles from './styles/home.module.scss';
 
 export default function Home() {
   return (
-    <>
-      <div>
-        企業の方はこちら
-        <Link href="/signup/company">Sign Up</Link>
-        <Link href="/signin/company">Sign In</Link>
+    <div className={styles.container}>
+      <div className={styles.top}>
+        <label className={styles.label}>企業の方はこちら</label>
+        <Link href='/signup/company'>
+          <button className={styles.button}>Sign Up</button>
+        </Link>
+        <Link href='/signin/company'>
+          <button className={styles.button}>Sign In</button>
+        </Link>
+        <label className={styles.label}>学生の方はこちら</label>
+        <Link href='/signup/student'>
+          <button className={styles.button}>Sign Up</button>
+        </Link>
+        <Link href='/signin/student'>
+          <button className={styles.button}>Sign In</button>
+        </Link>
       </div>
-      <div>
-        学生の方はこちら
-        <Link href="/signup/student">Sign Up</Link>
-        <Link href="/signin/student">Sign In</Link>
-      </div>
-    </>
+    </div>
   );
 }

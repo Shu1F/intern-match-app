@@ -1,6 +1,7 @@
 'use client';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import styles from '../../styles/home.module.scss';
 
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
@@ -47,45 +48,52 @@ const SignUpPage = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>アカウントを作成する</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <label>メールアドレス</label>
         <input
+          className={styles.input}
           type='email'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
           }
         />
-        <label>パスワード</label>
+        <label className={styles.label}>パスワード</label>
         <input
+          className={styles.input}
           type='password'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }
         />
-        <label>パスワードの確認</label>
+        <label className={styles.label}>パスワードの確認</label>
         <input
+          className={styles.input}
           type='password'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword_confirmation(e.target.value)
           }
         />
-        <label>名前</label>
+        <label className={styles.label}>名前</label>
         <input
+          className={styles.input}
           type='text'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
           }
         />
-        <label>所属大学</label>
+        <label className={styles.label}>所属大学</label>
         <input
+          className={styles.input}
           type='text'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setUniversity(e.target.value)
           }
         />
-        <button type='submit'>登録する</button>
+        <button className={styles.button} type='submit'>
+          登録する
+        </button>
       </form>
     </div>
   );

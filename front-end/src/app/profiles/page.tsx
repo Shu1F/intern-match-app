@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { profileType } from '../types/profileType';
 import { useRouter } from 'next/navigation';
+import styles from '../../styles/home.module.scss';
 import Link from 'next/link';
 
 const ProfileListPage = () => {
@@ -42,17 +43,17 @@ const ProfileListPage = () => {
     fetchProfiles();
   }, []);
   return (
-    <div>
+    <div className={styles.container}>
       <h1>学生一覧</h1>
       {profiles.length === 0 ? (
         <p>登録がありません。</p>
       ) : (
         profiles.map((profileContent) => (
-          <div key={profileContent.id}>
+          <div className={styles.postCard} key={profileContent.id}>
             <h2>{profileContent.name}</h2>
             <p>{profileContent.university}</p>
             <Link href={`profiles/${profileContent.user_id}/messages`}>
-              メッセージを送信する
+              <button className={styles.button}>メッセージを送信する</button>
             </Link>
           </div>
         ))

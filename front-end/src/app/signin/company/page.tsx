@@ -1,6 +1,7 @@
 'use client';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import styles from '../../styles/home.module.scss';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -33,24 +34,28 @@ const SignInPage = () => {
   };
 
   return (
-    <div>
-      <h1>ログインする</h1>
-      <form onSubmit={handleLogin}>
-        <label>メールアドレス</label>
+    <div className={styles.container}>
+      <h1 className={styles.title}>ログインする</h1>
+      <form className={styles.form} onSubmit={handleLogin}>
+        <label className={styles.label}>メールアドレス</label>
         <input
+          className={styles.input}
           type='email'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
           }
         />
-        <label>パスワード</label>
+        <label className={styles.label}>パスワード</label>
         <input
+          className={styles.input}
           type='password'
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }
         />
-        <button type='submit'>ログインする</button>
+        <button className={styles.button} type='submit'>
+          ログインする
+        </button>
       </form>
     </div>
   );
