@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import styles from '../../styles/home.module.scss';
+import styles from '../../../styles/home.module.css';
 
 // type messageType = {
 //   body: string;

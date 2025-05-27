@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { profileType } from '../types/profileType';
 import { useRouter } from 'next/navigation';
-import styles from '../../styles/home.module.scss';
+import styles from '../styles/home.module.css';
 import Link from 'next/link';
 
 const ProfileListPage = () => {
@@ -50,8 +50,8 @@ const ProfileListPage = () => {
       ) : (
         profiles.map((profileContent) => (
           <div className={styles.postCard} key={profileContent.id}>
-            <h2>{profileContent.name}</h2>
-            <p>{profileContent.university}</p>
+            <h2>氏名：{profileContent.name}</h2>
+            <p>大学：{profileContent.university}</p>
             <Link href={`profiles/${profileContent.user_id}/messages`}>
               <button className={styles.button}>メッセージを送信する</button>
             </Link>
