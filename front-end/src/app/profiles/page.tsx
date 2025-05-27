@@ -49,7 +49,7 @@ const ProfileListPage = () => {
         <p>登録がありません。</p>
       ) : (
         profiles.map((profileContent) => (
-          <div className={styles.postCard} key={profileContent.id}>
+          <div className={styles.profileCard} key={profileContent.id}>
             <h2>氏名：{profileContent.name}</h2>
             <p>大学：{profileContent.university}</p>
             <Link href={`profiles/${profileContent.user_id}/messages`}>

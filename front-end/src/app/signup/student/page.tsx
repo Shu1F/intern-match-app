@@ -51,7 +51,7 @@ const SignUpPage = () => {
     <div className={styles.container}>
       <h1>アカウントを作成する</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label>メールアドレス</label>
+        <label className={styles.label}>メールアドレス</label>
         <input
           className={styles.input}
           type='email'
